@@ -13,17 +13,8 @@ export class Editor extends Component {
 	render() {
 		return(
 			<div className="foreground-box editor">
-				<div className="illusion-styles">
-					<div>
-					Illusion Style
-					</div>
-					<div className="style-box-container">
-					<StyleChoice style="Wave" />
-					<StyleChoice style="Horizontal" />
-					<StyleChoice style="Vertical" />
-					<StyleChoice style="Rings" />
-					<StyleChoice style="Primrose" />
-					</div>
+				<div className="illusion-styles foreground-box-title">
+						Colors
 				</div>
 
 

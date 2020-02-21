@@ -11,8 +11,7 @@ export class StyleChoice extends Component {
 
 	render() {
 		return(
-			<div className="foreground-box-2 style-choice"
-						/*onClick={setGridStyle(this.props.style)}*/>
+			<div className="foreground-box-2 style-choice">
 				{ this.props.style }
 			</div>
 		)

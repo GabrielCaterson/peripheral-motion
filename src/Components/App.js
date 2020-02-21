@@ -66,6 +66,8 @@ class App extends Component{
 						</p>
 						<p className="explanation">
 							Let your eyes wander. These images don't move. Skeptical? Take a screenshot.
+							<br />
+							Feel free to use this for a background, or anything else.
 						</p>
 					</header>
 
