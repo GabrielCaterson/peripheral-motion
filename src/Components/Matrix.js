@@ -113,9 +113,9 @@ export class Matrix extends Component {
 				for (var j = 0; j < directorsPerRow; j++) {
 
 					if (j % 2 === 0) {
-						directorArray.push(<Director3 position="position3"/>);
+						directorArray.push(<Director4 position="position3"/>);
 					} else {
-						directorArray.push(<Director3 position="position7"/>);
+						directorArray.push(<Director4 position="position7"/>);
 					}
 				}
 				this.setState({ //I had this in the parent function, but for some reason it had wacky bugs.
@@ -179,7 +179,6 @@ export class Matrix extends Component {
 					</div>
 				</div>
 
-				{ this.state.style}
 
 				<div className={ "matrix" }>
 					<div className="matrix-box">
