@@ -143,16 +143,20 @@ body {
 	flex-direction: column;
 }
 
+.link {
+	color: #888888
+}
+
 .foreground-box {
 	/*background-color: var(--foreground-color);*/
 	background-color: var(--dark-surface-1);
 	border-radius: 5px;
 	margin: 15px;
-	margin-bottom: 30px;
+	margin-bottom: 20px;
 	/*color: var(--background-color);*/
 	color: var(--light-surface-1);
-	padding: 15px;
-	width: calc(100% - 60px);
+	padding: 10px;
+	width: calc(100% - 50px);
 	box-shadow: 0 30px 20px -20px rgba(0, 0, 0, 0.7),
 							0 0 10px 1px rgba(0, 0, 0, 0.5);
 	display: flex;
@@ -166,7 +170,9 @@ body {
 	border-radius:5px;
 	padding-top: 15px;
 	padding-bottom: 15px;
-	margin: 15px;
+	margin: 10px;
+	margin-left: 15px;
+	margin-right: 15px;
 	box-shadow: 0 30px 20px -20px rgba(0, 0, 0, 0.7),
 							0 0 10px 1px rgba(0, 0, 0, 0.5);
 	display: flex;
@@ -252,7 +258,7 @@ body {
 
 .explanation {
 	margin: 3px;
-	font-size: 20px;
+	font-size: 18px;
 }
 
 .director {
