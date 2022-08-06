@@ -5,6 +5,22 @@ Object.defineProperty(exports, '__esModule', { value: true });
 var helperPluginUtils = require('@babel/helper-plugin-utils');
 var core = require('@babel/core');
 
+function unshiftForXStatementBody(statementPath, newStatements) {
+  statementPath.ensureBlock();
+  const {
+    scope,
+    node
+  } = statementPath;
+  const bodyScopeBindings = statementPath.get("body").scope.bindings;
+  const hasShadowedBlockScopedBindings = Object.keys(bodyScopeBindings).some(name => scope.hasBinding(name));
+
+  if (hasShadowedBlockScopedBindings) {
+    node.body = core.types.blockStatement([...newStatements, node.body]);
+  } else {
+    node.body.body.unshift(...newStatements);
+  }
+}
+
 function hasArrayRest(pattern) {
   return pattern.elements.some(elem => core.types.isRestElement(elem));
 }
@@ -190,7 +206,7 @@ class DestructuringTransformer {
             });
           }
 
-          copiedPattern.properties[i] = Object.assign({}, copiedPattern.properties[i], {
+          copiedPattern.properties[i] = Object.assign({}, prop, {
             key: name
           });
         }
@@ -396,32 +412,23 @@ function convertVariableDeclaration(path, addHelper, arrayLikeIsIterable, iterab
   const nodesOut = [];
 
   for (const node of nodes) {
-    if (tail !== null && core.types.isVariableDeclaration(node)) {
-      tail.declarations.push(...node.declarations);
+    if (core.types.isVariableDeclaration(node)) {
+      if (tail !== null) {
+        tail.declarations.push(...node.declarations);
+        continue;
+      } else {
+        node.kind = nodeKind;
+        tail = node;
+      }
     } else {
-      node.kind = nodeKind;
-
-      if (!node.loc) {
-        node.loc = nodeLoc;
-      }
-
-      nodesOut.push(node);
-      tail = core.types.isVariableDeclaration(node) ? node : null;
+      tail = null;
     }
-  }
 
-  for (const nodeOut of nodesOut) {
-    if (!nodeOut.declarations) continue;
-
-    for (const declaration of nodeOut.declarations) {
-      const {
-        name
-      } = declaration.id;
-
-      if (scope.bindings[name]) {
-        scope.bindings[name].kind = nodeOut.kind;
-      }
+    if (!node.loc) {
+      node.loc = nodeLoc;
     }
+
+    nodesOut.push(node);
   }
 
   if (nodesOut.length === 1) {
@@ -429,11 +436,14 @@ function convertVariableDeclaration(path, addHelper, arrayLikeIsIterable, iterab
   } else {
     path.replaceWithMultiple(nodesOut);
   }
+
+  scope.crawl();
 }
 function convertAssignmentExpression(path, addHelper, arrayLikeIsIterable, iterableIsArray, objectRestNoSymbols, useBuiltIns) {
   const {
     node,
-    scope
+    scope,
+    parentPath
   } = path;
   const nodes = [];
   const destructuring = new DestructuringTransformer({
@@ -448,7 +458,7 @@ function convertAssignmentExpression(path, addHelper, arrayLikeIsIterable, itera
   });
   let ref;
 
-  if (path.isCompletionRecord() || !path.parentPath.isExpressionStatement()) {
+  if (!parentPath.isExpressionStatement() && !parentPath.isSequenceExpression() || path.isCompletionRecord()) {
     ref = scope.generateUidIdentifierBasedOnNode(node.right, "ref");
     nodes.push(core.types.variableDeclaration("var", [core.types.variableDeclarator(ref, node.right)]));
 
@@ -460,7 +470,7 @@ function convertAssignmentExpression(path, addHelper, arrayLikeIsIterable, itera
   destructuring.init(node.left, ref || node.right);
 
   if (ref) {
-    if (path.parentPath.isArrowFunctionExpression()) {
+    if (parentPath.isArrowFunctionExpression()) {
       path.replaceWith(core.types.blockStatement([]));
       nodes.push(core.types.returnStatement(core.types.cloneNode(ref)));
     } else {
@@ -469,7 +479,7 @@ function convertAssignmentExpression(path, addHelper, arrayLikeIsIterable, itera
   }
 
   path.replaceWithMultiple(nodes);
-  path.scope.crawl();
+  scope.crawl();
 }
 
 function variableDeclarationHasPattern(node) {
@@ -483,15 +493,15 @@ function variableDeclarationHasPattern(node) {
 }
 
 var index = helperPluginUtils.declare((api, options) => {
-  var _api$assumption, _options$allowArrayLi, _api$assumption2;
+  var _ref, _api$assumption, _ref2, _options$allowArrayLi, _ref3, _api$assumption2;
 
   api.assertVersion(7);
   const {
     useBuiltIns = false
   } = options;
-  const iterableIsArray = (_api$assumption = api.assumption("iterableIsArray")) != null ? _api$assumption : options.loose;
-  const arrayLikeIsIterable = (_options$allowArrayLi = options.allowArrayLike) != null ? _options$allowArrayLi : api.assumption("arrayLikeIsIterable");
-  const objectRestNoSymbols = (_api$assumption2 = api.assumption("objectRestNoSymbols")) != null ? _api$assumption2 : options.loose;
+  const iterableIsArray = (_ref = (_api$assumption = api.assumption("iterableIsArray")) != null ? _api$assumption : options.loose) != null ? _ref : false;
+  const arrayLikeIsIterable = (_ref2 = (_options$allowArrayLi = options.allowArrayLike) != null ? _options$allowArrayLi : api.assumption("arrayLikeIsIterable")) != null ? _ref2 : false;
+  const objectRestNoSymbols = (_ref3 = (_api$assumption2 = api.assumption("objectRestNoSymbols")) != null ? _api$assumption2 : options.loose) != null ? _ref3 : false;
   return {
     name: "transform-destructuring",
     visitor: {
@@ -507,6 +517,7 @@ var index = helperPluginUtils.declare((api, options) => {
 
         path.replaceWith(declaration.node);
         path.insertAfter(core.types.exportNamedDeclaration(null, specifiers));
+        path.scope.crawl();
       },
 
       ForXStatement(path) {
@@ -520,13 +531,16 @@ var index = helperPluginUtils.declare((api, options) => {
           const temp = scope.generateUidIdentifier("ref");
           node.left = core.types.variableDeclaration("var", [core.types.variableDeclarator(temp)]);
           path.ensureBlock();
-          const statementBody = node.body.body;
+          const statementBody = path.node.body.body;
+          const nodes = [];
 
           if (statementBody.length === 0 && path.isCompletionRecord()) {
-            statementBody.unshift(core.types.expressionStatement(scope.buildUndefinedNode()));
+            nodes.unshift(core.types.expressionStatement(scope.buildUndefinedNode()));
           }
 
-          statementBody.unshift(core.types.expressionStatement(core.types.assignmentExpression("=", left, temp)));
+          nodes.unshift(core.types.expressionStatement(core.types.assignmentExpression("=", left, core.types.cloneNode(temp))));
+          unshiftForXStatementBody(path, nodes);
+          scope.crawl();
           return;
         }
 
@@ -547,9 +561,8 @@ var index = helperPluginUtils.declare((api, options) => {
           addHelper: name => this.addHelper(name)
         });
         destructuring.init(pattern, key);
-        path.ensureBlock();
-        const block = node.body;
-        block.body = nodes.concat(block.body);
+        unshiftForXStatementBody(path, nodes);
+        scope.crawl();
       },
 
       CatchClause({
@@ -572,7 +585,8 @@ var index = helperPluginUtils.declare((api, options) => {
           addHelper: name => this.addHelper(name)
         });
         destructuring.init(pattern, ref);
-        node.body.body = nodes.concat(node.body.body);
+        node.body.body = [...nodes, ...node.body.body];
+        scope.crawl();
       },
 
       AssignmentExpression(path, state) {
@@ -595,5 +609,7 @@ var index = helperPluginUtils.declare((api, options) => {
   };
 });
 
-exports.default = index;
+exports.buildObjectExcludingKeys = buildObjectExcludingKeys;
+exports["default"] = index;
+exports.unshiftForXStatementBody = unshiftForXStatementBody;
 //# sourceMappingURL=index.js.map
