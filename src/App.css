@@ -37,8 +37,8 @@
 
 
 	/*yellow on purple*/
-	--background-color: #7700ee;
-	--foreground-color: #ffff00;
+	/*--background-color: #7700ee;
+	--foreground-color: #ffff00;*/
 
 	/*green on pink*/
 	/*--background-color: #ff00ff;
@@ -49,8 +49,8 @@
 	--foreground-color: #ffff00;*/
 
 	/*green on blue*/
-	/*--background-color: #0000ff;
-	--foreground-color: #00ff00;*/
+	--background-color: #0000ff;
+	--foreground-color: #00ff00;
 
 	/*blue on dark green*/
 	/*--background-color: #008800;
