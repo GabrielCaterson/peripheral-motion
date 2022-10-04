@@ -266,8 +266,7 @@ body {
 	width: 30px;
 	height: 30px;
 	margin: 10px;
-	/*border-radius: 30px;*/
-	border-radius: 1px;
+	border-radius: 30px;
 	color: black;
 
 	-webkit-animation: fadein 3s; /* Safari, Chrome and Opera > 12.1 */
