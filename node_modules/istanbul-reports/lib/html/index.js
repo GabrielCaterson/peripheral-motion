@@ -262,7 +262,7 @@ class HtmlReport extends ReportBase {
         this.verbose = opts.verbose;
         this.linkMapper = opts.linkMapper || standardLinkMapper;
         this.subdir = opts.subdir || '';
-        this.date = new Date().toISOString();
+        this.date = Date();
         this.skipEmpty = opts.skipEmpty;
     }
 

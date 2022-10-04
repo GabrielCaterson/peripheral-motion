@@ -151,7 +151,7 @@ function pageTemplate(it) {
         </script>
     </body>
 </html>
-`.trimStart();
+`.trimLeft();
 }
 
 /**
@@ -222,7 +222,7 @@ function messageTemplate(it) {
         <a href="${ruleUrl ? ruleUrl : ""}" target="_blank" rel="noopener noreferrer">${ruleId ? ruleId : ""}</a>
     </td>
 </tr>
-`.trimStart();
+`.trimLeft();
 }
 
 /**
@@ -280,7 +280,7 @@ function resultTemplate(it) {
         <span>${encodeHTML(summary)}</span>
     </th>
 </tr>
-`.trimStart();
+`.trimLeft();
 }
 
 /**
