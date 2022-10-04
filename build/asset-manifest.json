@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/peripheral-motion/static/css/main.6d413d5a.css",
+    "main.css": "/peripheral-motion/static/css/main.1a2c8dff.css",
     "main.js": "/peripheral-motion/static/js/main.02ec88b3.js",
     "static/media/logo.svg": "/peripheral-motion/static/media/logo.103b5fa18196d5665a7e12318285c916.svg",
     "index.html": "/peripheral-motion/index.html",
-    "main.6d413d5a.css.map": "/peripheral-motion/static/css/main.6d413d5a.css.map",
+    "main.1a2c8dff.css.map": "/peripheral-motion/static/css/main.1a2c8dff.css.map",
     "main.02ec88b3.js.map": "/peripheral-motion/static/js/main.02ec88b3.js.map"
   },
   "entrypoints": [
-    "static/css/main.6d413d5a.css",
+    "static/css/main.1a2c8dff.css",
     "static/js/main.02ec88b3.js"
   ]
 }
