@@ -1,16 +1,14 @@
 {
   "files": {
-    "main.css": "/peripheral-motion/static/css/main.39a261e1.chunk.css",
-    "main.js": "/peripheral-motion/static/js/main.88cf7b8b.chunk.js",
-    "main.js.map": "/peripheral-motion/static/js/main.88cf7b8b.chunk.js.map",
-    "runtime~main.js": "/peripheral-motion/static/js/runtime~main.9c278cf7.js",
-    "runtime~main.js.map": "/peripheral-motion/static/js/runtime~main.9c278cf7.js.map",
-    "static/js/2.8f032fa9.chunk.js": "/peripheral-motion/static/js/2.8f032fa9.chunk.js",
-    "static/js/2.8f032fa9.chunk.js.map": "/peripheral-motion/static/js/2.8f032fa9.chunk.js.map",
+    "main.css": "/peripheral-motion/static/css/main.1a2c8dff.css",
+    "main.js": "/peripheral-motion/static/js/main.02ec88b3.js",
+    "static/media/logo.svg": "/peripheral-motion/static/media/logo.103b5fa18196d5665a7e12318285c916.svg",
     "index.html": "/peripheral-motion/index.html",
-    "precache-manifest.d2d0301bf039cdb66944466546305690.js": "/peripheral-motion/precache-manifest.d2d0301bf039cdb66944466546305690.js",
-    "service-worker.js": "/peripheral-motion/service-worker.js",
-    "static/css/main.39a261e1.chunk.css.map": "/peripheral-motion/static/css/main.39a261e1.chunk.css.map",
-    "static/media/logo.svg": "/peripheral-motion/static/media/logo.5d5d9eef.svg"
-  }
+    "main.1a2c8dff.css.map": "/peripheral-motion/static/css/main.1a2c8dff.css.map",
+    "main.02ec88b3.js.map": "/peripheral-motion/static/js/main.02ec88b3.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1a2c8dff.css",
+    "static/js/main.02ec88b3.js"
+  ]
 }
