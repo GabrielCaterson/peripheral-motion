@@ -1,5 +1,7 @@
 This is an optical illusion of motion generator. 
 
+[Try it here!](https://gabrielcaterson.github.io/peripheral-motion/)
+
 
 ![image 1](https://raw.githubusercontent.com/GabrielCaterson/peripheral-motion/master/README_images/Screen%20Shot%202022-06-26%20at%204.26.43%20AM.png)
 
