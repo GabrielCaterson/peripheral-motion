@@ -71,6 +71,12 @@
 
 body {
 	background-color: var(--background-color);
+	
+	@viewport {
+		width: device-width ;
+		zoom: 1.0 ;
+	}
+	
 	box-sizing:border-box;
 	height: 200%;
 }
@@ -384,4 +390,32 @@ body {
   align-items: center;
   justify-content: center;
 	flex-wrap: wrap;
+}
+
+
+
+
+
+
+
+
+/* Mobile */
+@media (min-width: 576px) { 
+
+}
+
+/* Tablets */
+@media (min-width: 768px) {
+	
+}
+
+/* Desktops */
+@media (min-width: 992px) {
+
+}
+	
+
+/* Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+	
 }
