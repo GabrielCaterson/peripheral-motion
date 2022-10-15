@@ -58,7 +58,7 @@ class App extends Component{
 		    <div className="App App-body body">
 					<header className="foreground-box header">
 						<p className="title">
-							P E R I P H E R A L
+							PERIPHERAL
 							<br />
 						</p>
 						<p className="subtitle">
