@@ -33,6 +33,8 @@
 	--dark-surface-2: #404050;
 	--dark-surface-3: #505060;
 
+	--text-1: #eeeeee;
+
 
 
 
@@ -151,7 +153,9 @@ body {
 	margin: 15px;
 	margin-bottom: 20px;
 	/*color: var(--background-color);*/
-	color: var(--light-surface-1);
+	color: var(--text-1);
+	/*text-shadow: 0 6px 7px #000000;*/
+
 	padding: 10px;
 	width: calc(100% - 50px);
 	box-shadow: 0 30px 20px -20px rgba(0, 0, 0, 0.7),
@@ -245,6 +249,7 @@ body {
 	font-weight: 	900;
 	letter-spacing: 1.5vw;
 	text-indent: 	1.5vw;
+
 
 
 }

@@ -52,7 +52,9 @@ export class Editor extends Component {
 
 					<div className="color-picker foreground-box-2">
 						<div className="editor-box-text">
-							Tip: contrasting colors work best
+							Tips: <br />
+							Contrasting colors work best. <br />
+							Try using a big screen!
 						</div>
 					</div>
 				</div>
