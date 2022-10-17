@@ -32,7 +32,16 @@ export class Editor extends Component {
 							<ColorBlob area="foreground" color="red"/>
 							<ColorBlob area="foreground" color="pink"/>
 
+							<ColorBlob area="foreground" color="gray4"/>
+							<ColorBlob area="foreground" color="gray1"/>
+							<ColorBlob area="foreground" color="gray2"/>
+							<ColorBlob area="foreground" color="gray3"/>
+							
+
+							
+
 						</div>
+						
 					</div>
 
 					<div className="color-picker foreground-box-2">
@@ -47,6 +56,13 @@ export class Editor extends Component {
 						<ColorBlob area="background" color="purple" colorHex="#7700ee"/>
 						<ColorBlob area="background" color="red" colorHex="#ff0000"/>
 						<ColorBlob area="background" color="pink" colorHex="#ff00ff"/>
+
+						<ColorBlob area="background" color="gray4" colorHex="#ccc"/>
+						<ColorBlob area="background" color="gray1" colorHex="#505060"/>
+						<ColorBlob area="background" color="gray2" colorHex="#404050"/>
+						<ColorBlob area="background" color="gray3" colorHex="#303040"/>
+
+
 						</div>
 					</div>
 

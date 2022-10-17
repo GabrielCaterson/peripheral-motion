@@ -194,6 +194,7 @@ body {
 .color-picker {
 	width: 350px;
 	height: 170px;
+	height: 200px;
 	padding: 0px;
 }
 
@@ -325,6 +326,30 @@ body {
 
 .orange {
 	background-color: #ff8800;
+}
+
+.gray1 {
+	background-color: var(--dark-surface-3);
+}
+
+.gray2 {
+	background-color: var(--dark-surface-2);
+}
+
+.gray3 {
+	background-color: var(--dark-surface-1);
+}
+
+.gray4 {
+	background-color: var(--light-surface-1);
+}
+
+.gray5 {
+	background-color: var(--light-surface-2);
+}
+
+.gray6 {
+	background-color: var(--light-surface-3);
 }
 
 
