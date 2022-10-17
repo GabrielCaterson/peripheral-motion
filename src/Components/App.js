@@ -65,10 +65,10 @@ class App extends Component{
 							by Gabriel Caterson
 						</p>
 						<p className="explanation">
-							Scroll down and let your eyes wander. These images don't move. Skeptical? Take a screenshot.
-							<br />
+						<br />Scroll down and let your eyes wander. These images don't move. Skeptical? Take a screenshot.
+							<br /><br />
 							Feel free to use this for a background, or anything else.
-							<br />
+							<br /><br />
 							Based on <a href="http://brain.phgy.queensu.ca/pare/assets/Faubert%20Herbert%201999.pdf" className="link">this research</a> and some work by <a href="http://www.paulnasca.com/" className="link"> Paul Nasca</a> and others.
 						</p>
 					</header>
