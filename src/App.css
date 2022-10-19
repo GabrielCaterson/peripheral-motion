@@ -143,7 +143,8 @@ body {
 }
 
 .link {
-	color: #888888
+	/*color: #888888*/
+	color: var(--light-surface-1);
 }
 
 .foreground-box {
