@@ -336,6 +336,18 @@ body {
 }
 
 
+
+.brown {
+	background-color: #7B3F00;
+}
+
+.tan {
+	background-color: #EADDCA;
+}
+
+
+
+
 .gray1 {
 	background-color: var(--dark-surface-3);
 }
