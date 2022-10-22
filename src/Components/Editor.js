@@ -1,7 +1,11 @@
 import React, { Component } from "react";
+import { SketchPicker, SliderPicker, MaterialPicker } from 'react-color';
+
 
 import { ColorBlob } from "./ColorBlob.js";
 import { StyleChoice } from "./StyleChoice.js";
+import ColorPickerBlob from "./ColorPicker.js";
+
 
 export class Editor extends Component {
 	constructor(props) {
@@ -50,13 +54,13 @@ export class Editor extends Component {
 							<ColorBlob area="foreground" color="gray3"/>
 							
 						</div>
-						
+						<div className="color-blob"> <ColorPickerBlob /> </div>
 					</div>
 
 					<div className="color-picker foreground-box-2">
 						Background color
 						<div className="color-blob-box">
-							
+
 							<div className="color-blob color-blob-half"></div>
 							<ColorBlob area="background" color="orange" colorHex="#ff8800"/>
 							<ColorBlob area="background" color="yellow" colorHex="#ffff00"/>
