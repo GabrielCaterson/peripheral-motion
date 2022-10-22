@@ -28,33 +28,34 @@ export class Editor extends Component {
 						<div className="color-blob-box">
 
 							<div className="color-blob color-blob-half"></div>
+							<div className="color-blob color-blob-half"></div>
+							<div className="color-blob color-blob-half"></div>
 							<ColorBlob area="foreground" color="orange"/>
 							<ColorBlob area="foreground" color="yellow"/>
 							<ColorBlob area="foreground" color="green"/>
 							<ColorBlob area="foreground" color="darkGreen"/>
 							<ColorBlob area="foreground" color="lightBlue"/>
+							<div className="color-blob color-blob-half"></div>
+							<div className="color-blob color-blob-half"></div>
+							<div className="color-blob color-blob-half"></div>
+
+
 							<ColorBlob area="foreground" color="blue"/>
-							<div className="color-blob color-blob-half"></div>
-
-
-							<div className="color-blob color-blob-half"></div>
-							<div className="color-blob color-blob-half"></div>
 							<ColorBlob area="foreground" color="purple"/>
 							<ColorBlob area="foreground" color="pink"/>
 							<ColorBlob area="foreground" color="red"/>
 							<ColorBlob area="foreground" color="brown"/>
 							<ColorBlob area="foreground" color="tan"/>
-							<div className="color-blob color-blob-half"></div>
-							<div className="color-blob color-blob-half"></div>
 
 
 							<ColorBlob area="foreground" color="gray4"/>
 							<ColorBlob area="foreground" color="gray1"/>
 							<ColorBlob area="foreground" color="gray2"/>
 							<ColorBlob area="foreground" color="gray3"/>
+							<div className="color-blob color-picker-blob"> <ColorPickerBlob /> </div>
 							
 						</div>
-						<div className="color-blob"> <ColorPickerBlob /> </div>
+						
 					</div>
 
 					<div className="color-picker foreground-box-2">

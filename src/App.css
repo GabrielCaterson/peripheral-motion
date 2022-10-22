@@ -202,7 +202,6 @@ body {
 	width: 350px;
 	height: 170px;
 	height: 200px;
-	height: 260px;
 
 	padding: 0px;
 }
@@ -299,6 +298,10 @@ body {
 	background-color: var(--dark-surface-3);
 	box-shadow: 0 15px 15px -5px rgba(0, 0, 0, 0.7),
 							0 0 10px 1px rgba(0, 0, 0, 0.5);
+}
+
+.color-picker-blob {
+	margin-top: 10px;
 }
 
 .color-blob-half {
