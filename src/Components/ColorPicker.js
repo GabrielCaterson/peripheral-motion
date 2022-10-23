@@ -1,8 +1,12 @@
 'use strict'
 
-import React from 'react'
-import reactCSS from 'reactcss'
-import { SketchPicker } from 'react-color'
+import React from 'react';
+import reactCSS from 'reactcss';
+import { SketchPicker } from 'react-color';
+
+import { MContext } from './MyProvider.js';
+import { MyProvider } from './MyProvider.js';
+import { ColorContext } from './ColorContext.js';
 
 class ColorPickerBlob extends React.Component {
   state = {
@@ -57,6 +61,7 @@ class ColorPickerBlob extends React.Component {
           right: '0px',
           bottom: '0px',
           left: '0px',
+          padding: '25px',
         },
       },
     });
@@ -70,6 +75,21 @@ class ColorPickerBlob extends React.Component {
           <div style={ styles.cover } onClick={ this.handleClose }/>
           <SketchPicker color={ this.state.color } onChange={ this.handleChange } />
         </div> : null }
+
+
+        <ColorContext.Consumer>
+            {({color, setColor}) => (
+                <div 	className={"color-blob " + this.props.color }
+                    onClick={
+                        () => this.props.area === "background" ?
+                        document.body.style.backgroundColor = this.props.colorHex :
+                        setColor(this.props.color)
+
+                    }
+                >
+                </div>
+            )}
+		</ColorContext.Consumer>
 
       </div>
     )

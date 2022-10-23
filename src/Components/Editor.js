@@ -52,7 +52,7 @@ export class Editor extends Component {
 							<ColorBlob area="foreground" color="gray1"/>
 							<ColorBlob area="foreground" color="gray2"/>
 							<ColorBlob area="foreground" color="gray3"/>
-							<div className="color-blob color-picker-blob"> <ColorPickerBlob /> </div>
+							<div className="color-blob color-picker-blob"> <ColorPickerBlob area="foreground" color="green"/> </div>
 							
 						</div>
 						
