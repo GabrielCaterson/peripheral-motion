@@ -68,13 +68,6 @@ class ColorPickerBlob extends React.Component {
 
     return (
       <div>
-        <div style={ styles.swatch } onClick={ this.handleClick }>
-          <div style={ styles.color } />
-        </div>
-        { this.state.displayColorPicker ? <div style={ styles.popover }>
-          <div style={ styles.cover } onClick={ this.handleClose }/>
-          <SketchPicker color={ this.state.color } onChange={ this.handleChange } />
-        </div> : null }
 
 
         <ColorContext.Consumer>
@@ -87,8 +80,18 @@ class ColorPickerBlob extends React.Component {
 
                     }
                 >
+                    <div style={ styles.swatch } onClick={ this.handleClick }>
+                    <div style={ styles.color } />
+                    </div>
+                    
+                    { this.state.displayColorPicker ? <div style={ styles.popover }>
+                    <div style={ styles.cover } onClick={ this.handleClose }/>
+                    <SketchPicker color={ this.state.color } onChange={ this.handleChange } />
+                    </div> : null }
                 </div>
             )}
+
+            
 		</ColorContext.Consumer>
 
       </div>
